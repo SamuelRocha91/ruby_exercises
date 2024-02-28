@@ -1,0 +1,19 @@
+current directory: /home/samuel/projectsByOrganizations/odinProject/ruby_exercises/vendor/bundle/ruby/3.2.0/gems/debug-1.9.1/ext/debug
+/home/samuel/.rbenv/versions/3.2.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/samuel/projectsByOrganizations/odinProject/ruby_exercises/vendor/bundle/ruby/3.2.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240227-560356-oztt7c sitelibdir\=./.gem.20240227-560356-oztt7c clean
+
+current directory: /home/samuel/projectsByOrganizations/odinProject/ruby_exercises/vendor/bundle/ruby/3.2.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240227-560356-oztt7c sitelibdir\=./.gem.20240227-560356-oztt7c
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/samuel/projectsByOrganizations/odinProject/ruby_exercises/vendor/bundle/ruby/3.2.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240227-560356-oztt7c sitelibdir\=./.gem.20240227-560356-oztt7c install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20240227-560356-oztt7c/debug
+
+current directory: /home/samuel/projectsByOrganizations/odinProject/ruby_exercises/vendor/bundle/ruby/3.2.0/gems/debug-1.9.1/ext/debug
+make DESTDIR\= sitearchdir\=./.gem.20240227-560356-oztt7c sitelibdir\=./.gem.20240227-560356-oztt7c clean
