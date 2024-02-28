@@ -25,10 +25,10 @@ class TicTacToe
         register_play position
         check_game_end
         rotation == "Player 01" ? self.rotation = "Player 02" : self.rotation = "Player 01"
+        system("clear")
       else
         puts "JOGADA INVÁLIDA! INSIRA UM CAMPO CORRETO"
       end
-      system("clear")
     end
     display_board
     puts "Resultado Final: #{win}"
@@ -76,9 +76,13 @@ class TicTacToe
               1
              when "C"
               2
+             else
+              false
             end
-    line = array_play[1].to_i
-    if self.table[line][column] != " "
+    line = array_play[1].match?(/[A-Z|a-z]/) ? false : array_play[1].to_i
+    if !column || !line
+      false
+    elsif self.table[line][column] != " "
       false
     else
       true
