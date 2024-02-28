@@ -2,42 +2,45 @@
 require_relative 'player'
 
 class TicTacToe
-  attr_accessor :finish, :table, :rotation, :win
+  attr_accessor :finish, :table, :rotation, :win, :player_1, :player_2
 
   def initialize
-    player_1 = Player.new "X"
-    player_2 = Player.new "O"
+    @player_1 = Player.new "X"
+    @player_2 = Player.new "O"
     @table = Array.new(3) { Array.new(3) { " " } }
     @finish = false
     @rotation = "Player 01"
     @win = "EMPATE!"
 
-    self.play player_1, player_2
+    play 
   end
 
-  def boas_vindas
+  def play
+    welcome
+    until finish
+      display_board
+      puts "#{rotation} escolha uma opção de jogada(letra, número):"
+      position = gets.chomp
+      if valid_position? position
+        register_play position
+        check_game_end
+        rotation == "Player 01" ? self.rotation = "Player 02" : self.rotation = "Player 01"
+      else
+        puts "JOGADA INVÁLIDA! INSIRA UM CAMPO CORRETO"
+      end
+      system("clear")
+    end
+    display_board
+    puts "Resultado Final: #{win}"
+  end
+
+   def welcome
     puts "Olá, sejam bem vindos(as)!"
     puts "Player01 jogará com 'X'"
     puts "Player02 jogará com 'O'"
   end
 
-  def play(player_1, player_2)
-    boas_vindas()
-    until finish
-      armar_quadro()
-      puts "#{rotation} escolha uma opção de jogada(letra, número):"
-      position = gets.chomp
-      if !verify_position position
-        puts "JOGADA INVÁLIDA! INSIRA UM CAMPO CORRETO"
-      else
-        register_play position
-        is_finish()
-        rotation == "Player 01" ? self.rotation = "Player 02" : self.rotation = "Player 01"
-      end
-    end
-    puts "Resultado Final: #{win}"
-  end
-  def armar_quadro
+  def display_board
     puts "JOGO DA VELHA"
     puts "  A B C "
     puts "0 #{table[0][0]}|#{table[0][1]}|#{table[0][2]}"
@@ -58,13 +61,13 @@ class TicTacToe
             end
     line = array_play[1].to_i
     if rotation == "Player 01"
-      self.table[line][column] = 'X'
+      self.table[line][column] = self.player_1.symbol
     else
-      self.table[line][column] = 'O'
+      self.table[line][column] = self.player_2.symbol
     end
   end
 
-  def verify_position(position)
+  def valid_position?(position)
     array_play = position.split('')
     column = case array_play[0].upcase
              when "A" 
@@ -82,13 +85,11 @@ class TicTacToe
     end
   end
 
-  def is_finish
-    puts "inicio da is finish"
+  def check_game_end
     if player_win?
       self.finish = true
       self.win = rotation
     elsif self.table.all? { |array| array.all? { |value| value != ' '}}
-    puts "aqui"
       self.finish = true
     end
   end
