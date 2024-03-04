@@ -3,7 +3,7 @@ class Mastermind
   # Acessores para os atributos senha, finish e tentativa.
   attr_accessor :senha, :finhish, :tentativa
   # Constante que contém as cores disponíveis para o jogo.
-  CORES = ["azul", "amarelo", "verde", "vermelho", "laranja", "rosa", "cinza", "branco", "preto", "marrom"]
+  TIMES = ["flamengo","palmeiras","corinthians", "saopaulo", "vasco", "santos", "gremio", "internacional", "cruzeiro", "atletico", "botafogo", "fluminense", "bahia", "sport", "fortaleza", "ceara", "goias", "athletico", "chapecoense", "avaí", "vitoria"]
 
   # Método de inicialização da classe.
   def initialize
@@ -12,7 +12,7 @@ class Mastermind
     # Inicializa a senha do jogo, com quatro cores aleatórias.
     @senha = []
     (1..4).each do
-        @senha << CORES[Random.rand(10)]
+        @senha << TIMES[Random.rand(21)]
     end
     # Inicializa o indicador de finalização do jogo.
     @finish = false
@@ -28,7 +28,7 @@ class Mastermind
       puts "Tentativa #{@tentativa}"
      # Solicita ao jogador que digite sua tentativa.
 
-      puts "Digite quatro cores sepradas por espaço:"
+      puts "Digite quatro times separados por espaço:"
       palpite = gets.chomp().split(' ')
       # Inicializa um array para armazenar o feedback da tentativa.
       feedback = Array.new(4)
@@ -63,21 +63,21 @@ class Mastermind
     def welcome
       puts "Olá, seja bem-vindo ao MASTERMIND Brasil!!!"
       sleep(3)
-      puts "O jogo consiste em advinhar uma sequência de quatro cores"
+      puts "O jogo consiste em advinhar uma sequência de quatro times"
       sleep(3)
-      puts "As cores estão em português e podem ser reptidas"
+      puts "Os times estão em português e podem ser reptidas"
       sleep(3)
       puts "Serão 12 tentativas!"
       sleep(2)
       puts "A cada tentativa você obterá um feedback da jogada:"
       sleep(3)
-      puts "[true, 'partial', nil, nil]"
+      puts "[true, false, nil, nil]"
       sleep(2)
       puts "Será uma resposta para cada uma das 4 senhas"
       sleep(2)
       puts "true = acerto total"
       sleep(2)
-      puts "'partial' = acerto parcial"
+      puts "nil = acerto parcial"
       sleep(2)
       puts "false = erro"
       sleep(2)
